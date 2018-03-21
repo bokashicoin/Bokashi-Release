@@ -71,7 +71,6 @@ read PRIVKEY
 CONF_DIR=~/.Bokashid/
 mkdir $CONF_DIR
 CONF_FILE=Bokashid.conf
-PORT=7118
 
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
@@ -92,7 +91,10 @@ echo "" >> $CONF_DIR/$CONF_FILE
 echo "port=$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeaddr=$IP:$PORT" >> $CONF_DIR/$CONF_FILE
 echo "masternodeprivkey=$PRIVKEY" >> $CONF_DIR/$CONF_FILE
-sudo ufw allow $PORT/tcp
+sudo ufw allow 46550/tcp
+sudo ufw allow 46560/tcp
+sudo ufw allow 46551/tcp
+sudo ufw allow 46561/tcp
 
-sudo chmod 755 /usr/bin/Bokashid
-Bokashid -daemon
+sudo chmod +x /usr/bin/Bokashid
+Bokashid -daemon -server -testnet
