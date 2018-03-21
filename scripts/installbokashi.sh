@@ -2,7 +2,7 @@
 
 cd ~
 echo "****************************************************************************"
-echo "* Ubuntu 16.04 is the recommended opearting system for this install.       *"
+echo "* Ubuntu 16.04 is the recommended operating system for this install.       *"
 echo "*                                                                          *"
 echo "* This script will install and configure your Bokashi Coin masternodes.    *"
 echo "****************************************************************************"
@@ -71,6 +71,7 @@ read PRIVKEY
 CONF_DIR=~/.Bokashid/
 mkdir $CONF_DIR
 CONF_FILE=Bokashid.conf
+PORT=46551
 
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> $CONF_DIR/$CONF_FILE
